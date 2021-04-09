@@ -12,34 +12,42 @@ import Foundation
 struct Board {
     //9X9 board
     //0 = empty space
-    var board: [[Int]] = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+    var solvedBoard: [[Int]] = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+    var gameBoard: [[Int]] = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
     //difficulty: practice, VeryEasy, Easy, Mdium, Hard, VeryHard, Insane
     var difficulty = "Easy"
     
     //getters
     public func getBoard() -> [[Int]] {
-        return board
+        return solvedBoard
+    }
+    public func getSpace(space: (Int,Int)) -> String {
+        return String(solvedBoard[space.0][space.1])
     }
     
     //setters
     public mutating func setDifficulty(diff: String) {
         difficulty = diff
     }
+
     
     public mutating func startSudoku() {
-        generateBoard()
-        printBoard()
-        board = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+        solvedBoard = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+        generateBoard()
+        printBoard()
+        
     }
     
     private func findEmptySpace() -> (Int, Int){
-        for i in 0 ... board.count-1 {
+        for i in 0 ... solvedBoard.count-1 {
             for j in 0...8 {
-                if board[i][j] == 0 {
+                if solvedBoard[i][j] == 0 {
                     return (i,j)
                 }
                 
@@ -56,20 +64,21 @@ struct Board {
         emptySpace = findEmptySpace()
         //non empty space
         if emptySpace == (-1,-1) {
+            gameBoard = solvedBoard
             return true
         }
         else {
             //check possible numbers
             for i in [1,2,3,4,5,6,7,8,9].shuffled() {
                 if validateSpace(space: emptySpace, number: i) {
-                    board[emptySpace.0][emptySpace.1] = i
+                    solvedBoard[emptySpace.0][emptySpace.1] = i
                     
                     //recursive slove
                     if generateBoard() {
                         return true
                     }//end recursive
                     //notvalid reset space to 0
-                    board[emptySpace.0][emptySpace.1] = 0
+                    solvedBoard[emptySpace.0][emptySpace.1] = 0
                 }//end if validate
             }//end for loop check possible numbers
         }//end else loop
@@ -78,15 +87,15 @@ struct Board {
 
     private func validateSpace(space: (Int,Int), number:Int) -> Bool {
         //check row
-        for i in 0...board.count-1 {
-            if (board[space.0][i] == number && space.1 != i) {
+        for i in 0...solvedBoard.count-1 {
+            if (solvedBoard[space.0][i] == number && space.1 != i) {
                 return false
             }
         }//end for loop row
         
         //check col
-        for i in 0...board.count-1 {
-            if (board[i][space.1] == number && space.0 != i) {
+        for i in 0...solvedBoard.count-1 {
+            if (solvedBoard[i][space.1] == number && space.0 != i) {
                 return false
             }
         }//end check col for loop
@@ -97,7 +106,7 @@ struct Board {
         
         for i in (row*3)...row*3+2  {
             for j in (col*3) ... (col*3+2) {
-                if (board[i][j] == number && (i,j) != space) {
+                if (solvedBoard[i][j] == number && (i,j) != space) {
                     return false
                 }
             }
@@ -107,7 +116,7 @@ struct Board {
     }//end valid
     
     public func printBoard() {
-        print(board)
+        print(solvedBoard)
     }
     
     
