@@ -9,11 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var boardManager = Board()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func startButtonPushed(_ sender: UIButton) {
+        boardManager.solveBoard()
+        boardManager.printBoard()
+    }
+    
 }
 
