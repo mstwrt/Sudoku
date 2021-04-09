@@ -16,8 +16,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func startButtonPushed(_ sender: UIButton) {
-        boardManager.solveBoard()
-        boardManager.printBoard()
+        boardManager.startSudoku()
     }
     
 }

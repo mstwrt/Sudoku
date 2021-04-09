@@ -10,15 +10,34 @@
 import Foundation
 
 struct Board {
-    //4X4 board
+    //9X9 board
     //0 = empty space
-    var board: [[Int]] = [[1,2,3,0,0,0,0,0,0], [4,5,6,0,0,0,0,0,0],[7,8,9,0,0,0,0,0,0],
-                          [0,0,0,1,2,3,0,0,0], [0,0,0,4,5,6,0,0,0],[0,0,0,7,8,9,0,0,0],
-                          [0,0,0,0,0,0,1,2,3], [0,0,0,0,0,0,4,5,6],[0,0,0,0,0,0,7,8,9]]
-
+    var board: [[Int]] = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+    //difficulty: practice, VeryEasy, Easy, Mdium, Hard, VeryHard, Insane
+    var difficulty = "Easy"
+    
+    //getters
+    public func getBoard() -> [[Int]] {
+        return board
+    }
+    
+    //setters
+    public mutating func setDifficulty(diff: String) {
+        difficulty = diff
+    }
+    
+    public mutating func startSudoku() {
+        generateBoard()
+        printBoard()
+        board = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                 [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
+                 [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+    }
+    
     private func findEmptySpace() -> (Int, Int){
-        print(board.count)
-        for i in 0...8 {
+        for i in 0 ... board.count-1 {
             for j in 0...8 {
                 if board[i][j] == 0 {
                     return (i,j)
@@ -31,7 +50,7 @@ struct Board {
         return (-1,-1)
     }//end findempty
     
-    public mutating func solveBoard() -> Bool {
+    private mutating func generateBoard() -> Bool {
         var emptySpace: (Int,Int)
         //find empty space
         emptySpace = findEmptySpace()
@@ -41,12 +60,12 @@ struct Board {
         }
         else {
             //check possible numbers
-            for i in 1...9 {
+            for i in [1,2,3,4,5,6,7,8,9].shuffled() {
                 if validateSpace(space: emptySpace, number: i) {
                     board[emptySpace.0][emptySpace.1] = i
                     
                     //recursive slove
-                    if solveBoard() {
+                    if generateBoard() {
                         return true
                     }//end recursive
                     //notvalid reset space to 0
@@ -59,14 +78,14 @@ struct Board {
 
     private func validateSpace(space: (Int,Int), number:Int) -> Bool {
         //check row
-        for i in 0...8 {
+        for i in 0...board.count-1 {
             if (board[space.0][i] == number && space.1 != i) {
                 return false
             }
         }//end for loop row
         
         //check col
-        for i in 0...8 {
+        for i in 0...board.count-1 {
             if (board[i][space.1] == number && space.0 != i) {
                 return false
             }
@@ -94,4 +113,11 @@ struct Board {
     
 
 }//end brain
+
+extension Int {
+    static func random(max: Int) -> Int {
+        let rnd = Int(arc4random_uniform(UInt32(max) + 1))
+        return rnd
+    }
+}
 
