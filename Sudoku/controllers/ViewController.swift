@@ -46,6 +46,11 @@ class ViewController: UIViewController {
             gridLabelArray[i+63].text = boardManager.getSpace(space: (7,i))
             gridLabelArray[i+72].text = boardManager.getSpace(space: (8,i))
         }
+        for i in 0 ... gridLabelArray.count-1 {
+            if gridLabelArray[i].text == "0" {
+                gridLabelArray[i].text = ""
+            }
+        }
     }
     
 }

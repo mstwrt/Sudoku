@@ -26,7 +26,7 @@ struct Board {
         return solvedBoard
     }
     public func getSpace(space: (Int,Int)) -> String {
-        return String(solvedBoard[space.0][space.1])
+        return String(gameBoard[space.0][space.1])
     }
     
     //setters
@@ -65,6 +65,7 @@ struct Board {
         //non empty space
         if emptySpace == (-1,-1) {
             gameBoard = solvedBoard
+            createGameBoard()
             return true
         }
         else {
@@ -118,6 +119,21 @@ struct Board {
     public func printBoard() {
         print(solvedBoard)
     }
+    
+    private mutating func createGameBoard() {
+        var numberspacesRemove = 39
+        while numberspacesRemove > 0 {
+            var row = Int.random(max: 8)
+            var col = Int.random(max: 8)
+            
+            if gameBoard[row][col] != 0 {
+                gameBoard[row][col] = 0
+                numberspacesRemove -= 1
+            }
+            
+        }//end while
+        
+    }//end creategameboard
     
     
 

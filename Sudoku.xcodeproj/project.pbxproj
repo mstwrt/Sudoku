@@ -15,6 +15,7 @@
 		3E22D3382620B316005562E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E22D3372620B316005562E2 /* Assets.xcassets */; };
 		3E22D33B2620B316005562E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E22D3392620B316005562E2 /* LaunchScreen.storyboard */; };
 		3E22D3472620B5DD005562E2 /* BoardBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E22D3462620B5DD005562E2 /* BoardBrain.swift */; };
+		3E23172C2624D2CE00197CE9 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23172B2624D2CE00197CE9 /* DifficultyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3E22D33A2620B316005562E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E22D33C2620B316005562E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E22D3462620B5DD005562E2 /* BoardBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBrain.swift; sourceTree = "<group>"; };
+		3E23172B2624D2CE00197CE9 /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				3E22D32F2620B30C005562E2 /* ViewController.swift */,
+				3E23172B2624D2CE00197CE9 /* DifficultyViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E22D3302620B30C005562E2 /* ViewController.swift in Sources */,
+				3E23172C2624D2CE00197CE9 /* DifficultyViewController.swift in Sources */,
 				3E22D32C2620B30C005562E2 /* AppDelegate.swift in Sources */,
 				3E22D3362620B30C005562E2 /* Sudoku.xcdatamodeld in Sources */,
 				3E22D32E2620B30C005562E2 /* SceneDelegate.swift in Sources */,
