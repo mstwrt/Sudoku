@@ -30,17 +30,30 @@
                                 <color key="textColor" red="0.1797730854" green="0.20102785819999999" blue="0.40121351519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-Jz-JwX">
+                                <rect key="frame" x="107" y="282" width="177" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="0.1797730854" green="0.20102785819999999" blue="0.40121351519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aVI-1d-NQ8">
+                                <rect key="frame" x="16" y="328" width="358" height="220"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ffy-s9-8ar"/>
                         <color key="backgroundColor" red="0.95737239910000005" green="1" blue="0.78526590789999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="difficultyPicker" destination="aVI-1d-NQ8" id="nLe-KM-oVU"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="difficultyToMain" id="Rv2-V7-4u8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wib-q3-4to" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-722" y="75"/>
+            <point key="canvasLocation" x="-723.07692307692309" y="74.644549763033169"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

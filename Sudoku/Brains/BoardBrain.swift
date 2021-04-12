@@ -121,7 +121,30 @@ struct Board {
     }
     
     private mutating func createGameBoard() {
-        var numberspacesRemove = 39
+        var numberspacesRemove = 0
+        switch difficulty {
+        case "Practice":
+            numberspacesRemove = 15
+        case "Very Easy":
+            numberspacesRemove = 20
+        case "Easy":
+            numberspacesRemove = 24
+        case "Medium":
+            numberspacesRemove = 34
+        case "Hard":
+            numberspacesRemove = 44
+        case "Very Hard":
+            numberspacesRemove = 54
+        case "Master":
+            numberspacesRemove = 64
+        case "Insane":
+            numberspacesRemove = 66
+        default:
+            numberspacesRemove = 34
+        }
+        
+        
+        
         while numberspacesRemove > 0 {
             var row = Int.random(max: 8)
             var col = Int.random(max: 8)

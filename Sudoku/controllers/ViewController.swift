@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print(difficulty)
+        boardManager.setDifficulty(diff: difficulty)
         boardManager.startSudoku()
         fillGrid()
         
