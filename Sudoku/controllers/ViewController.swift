@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         
         
     }
-
+   
     @IBAction func startButtonPushed(_ sender: UIButton) {
         boardManager.startSudoku()
         fillGrid()
@@ -52,7 +52,9 @@ class ViewController: UIViewController {
         for i in 0 ... gridLabelArray.count-1 {
             if gridLabelArray[i].text == "0" {
                 gridLabelArray[i].text = ""
+                gridLabelArray[i].tag = 0
             }
+            print(gridLabelArray[i].tag)
         }
     }
     
