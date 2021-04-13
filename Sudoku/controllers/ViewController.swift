@@ -12,8 +12,17 @@ class ViewController: UIViewController {
     //@IBOutlet var displayRows: [UILabel]!
     //@IBOutlet var test: [UILabel]!
     var buttonToSet: UIButton!
+    var currentGridLocation: (Int, Int)!
+    
     @IBOutlet var gridButtons: [UIButton]!
     
+    @IBAction func gridButtonPushed(_ sender: UIButton) {
+        if sender.tag == 0 {
+            buttonToSet = sender
+            buttonToSet.setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
+            buttonToSet.setTitle("?", for: .normal)
+        }
+    }
     
     
     
@@ -62,6 +71,8 @@ class ViewController: UIViewController {
             //gridLabelArray[i+72].text = boardManager.getSpace(space: (8,i))
         }
         for i in 0 ... gridButtons.count-1 {
+            gridButtons[i].tag = 1
+            gridButtons[i].setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
             if gridButtons[i].currentTitle == "0" {
                 gridButtons[i].setTitle("", for: .normal)
                 gridButtons[i].tag = 0
