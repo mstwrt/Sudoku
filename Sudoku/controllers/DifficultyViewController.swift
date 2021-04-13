@@ -24,6 +24,7 @@ class DifficultyViewController: UIViewController, UIPickerViewDelegate, UIPicker
         //add additional setup code after load
         difficultyPicker.delegate = self
         difficultyPicker.dataSource = self
+        print(difficultyPicker.frame)
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
