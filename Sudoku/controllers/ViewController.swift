@@ -18,10 +18,13 @@ class ViewController: UIViewController {
     
     @IBAction func gridButtonPushed(_ sender: UIButton) {
         if sender.tag == 0 {
-            buttonToSet = sender
-            buttonToSet.setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
-            buttonToSet.setTitle("?", for: .normal)
-        }
+            if buttonToSet == nil {
+                readyButtonToSet(newButton: sender)
+            }
+            else {
+                clearButtonToSet()
+                readyButtonToSet(newButton: sender)      }
+            }
     }
     
     
@@ -29,6 +32,20 @@ class ViewController: UIViewController {
     var boardManager = Board()
     var difficulty: String = ""
     
+    
+    private func readyButtonToSet(newButton: UIButton) {
+        buttonToSet = newButton
+        buttonToSet.setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
+        buttonToSet.setTitle("?", for: .normal)
+        
+    }
+    
+    private func clearButtonToSet() {
+        buttonToSet.setTitle("", for: .normal)
+        buttonToSet.setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
+        buttonToSet.tag = 0
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -71,6 +88,7 @@ class ViewController: UIViewController {
             //gridLabelArray[i+72].text = boardManager.getSpace(space: (8,i))
         }
         for i in 0 ... gridButtons.count-1 {
+            buttonToSet = nil
             gridButtons[i].tag = 1
             gridButtons[i].setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
             if gridButtons[i].currentTitle == "0" {
