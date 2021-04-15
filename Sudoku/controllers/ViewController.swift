@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var gridButtonIndex: Int = -1
     var oldGridButtonIndex: Int = -1
     
+    @IBOutlet weak var errorsLeftLabel: UILabel!
     @IBOutlet var gridButtons: [UIButton]!
     
     @IBAction func gridButtonPushed(_ sender: UIButton) {
@@ -25,7 +26,15 @@ class ViewController: UIViewController {
                 //buttonToSet = sender
                 gridButtonIndex = gridButtons.firstIndex(of: sender) ?? -1
                 readyButtonToSet(newButton: sender)
-                print(gridButtonIndex)
+                if (gridButtonIndex % 9) > 0 {
+                    print(gridButtonIndex/9)
+                    print(gridButtonIndex%9)
+                }
+                else {
+                    print(gridButtonIndex/9)
+                    print("0")
+                }
+                
                 
             }
             //a gridbutton has been selected, but not changed
@@ -36,19 +45,42 @@ class ViewController: UIViewController {
                 //clear old gridbutton selected
                 clearButtonToSet()
                 readyButtonToSet(newButton: sender)
-                print(gridButtonIndex)
+                if (gridButtonIndex % 9) > 0 {
+                    print(gridButtonIndex/9)
+                    print(gridButtonIndex%9)
+                }
+                else {
+                    print(gridButtonIndex/9)
+                    print("0")
+                }
             }
         }
     }
     
     @IBAction func numberButtonPushed(_ sender: UIButton) {
+        var row = 0
+        var col = 0
         if gridButtonIndex != -1 {
+            row = gridButtonIndex/9
+            if (gridButtonIndex % 9) > 0 {
+                col = gridButtonIndex % 9
+            }
+            else {
+                col = 0
+            }
             //buttonToSet.setTitle(sender.currentTitle, for: .normal)
             //buttonToSet.tag = 1
-            gridButtons[gridButtonIndex].setTitle(sender.currentTitle, for: .normal)
-            gridButtons[gridButtonIndex].setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-            gridButtons[gridButtonIndex].tag = 1
-            gridButtonIndex = -1
+            print("Row: \(row) Col: \(col)")
+            print(boardManager.checkAnswer(checkSpace: (row,col), value: sender.tag))
+            if boardManager.checkAnswer(checkSpace: (row, col), value: sender.tag) {
+                gridButtons[gridButtonIndex].setTitle(sender.currentTitle, for: .normal)
+                gridButtons[gridButtonIndex].setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+                gridButtons[gridButtonIndex].tag = 1
+                gridButtonIndex = -1
+            }
+            else {
+                print("BAD")
+            }
             
         }
     }
@@ -87,6 +119,7 @@ class ViewController: UIViewController {
         boardManager.setDifficulty(diff: difficulty)
         boardManager.startSudoku()
         fillGrid()
+        errorsLeftLabel.text = "Errors Left \(String(boardManager.getNumberOfErrorsAllowed()))"
         
         
         

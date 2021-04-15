@@ -20,7 +20,7 @@ struct Board {
                               [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
     //difficulty: practice, VeryEasy, Easy, Mdium, Hard, VeryHard, Insane
     var difficulty = "Easy"
-    
+    var numberOfErrorsAllowed = 0
     //getters
     public func getBoard() -> [[Int]] {
         return solvedBoard
@@ -28,10 +28,33 @@ struct Board {
     public func getSpace(space: (Int,Int)) -> String {
         return String(gameBoard[space.0][space.1])
     }
+    public func getNumberOfErrorsAllowed() -> Int {
+        return numberOfErrorsAllowed
+    }
     
     //setters
     public mutating func setDifficulty(diff: String) {
         difficulty = diff
+        switch difficulty {
+        case "Practice":
+            numberOfErrorsAllowed = 1
+        case "Very Easy":
+            numberOfErrorsAllowed = 3
+        case "Easy":
+            numberOfErrorsAllowed = 4
+        case "Medium":
+            numberOfErrorsAllowed = 5
+        case "Hard":
+            numberOfErrorsAllowed = 7
+        case "Very Hard":
+            numberOfErrorsAllowed = 9
+        case "Master":
+            numberOfErrorsAllowed = 11
+        case "Insane":
+            numberOfErrorsAllowed = 13
+        default:
+            numberOfErrorsAllowed = 4
+        }
     }
 
     
@@ -86,6 +109,14 @@ struct Board {
         return false
     }//end solvevboard
 
+    public func checkAnswer(checkSpace: (Int,Int), value: Int) -> Bool {
+        if solvedBoard[checkSpace.0][checkSpace.1] == value {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     private func validateSpace(space: (Int,Int), number:Int) -> Bool {
         //check row
         for i in 0...solvedBoard.count-1 {
@@ -118,6 +149,12 @@ struct Board {
     
     public func printBoard() {
         print(solvedBoard)
+    }
+    
+    public mutating func getErrorsLeft() -> String {
+        
+        return "Errors Left: \(numberOfErrorsAllowed)"
+        numberOfErrorsAllowed -= 1
     }
     
     private mutating func createGameBoard() {
