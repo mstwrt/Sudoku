@@ -79,7 +79,8 @@ class ViewController: UIViewController {
                 gridButtonIndex = -1
             }
             else {
-                print("BAD")
+                errorsLeftLabel.text = boardManager.getErrorsLeft()
+                
             }
             
         }

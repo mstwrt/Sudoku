@@ -18,9 +18,10 @@ struct Board {
     var gameBoard: [[Int]] = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
-    //difficulty: practice, VeryEasy, Easy, Mdium, Hard, VeryHard, Insane
+    //difficulty: practice, Very Easy, Easy, Mdium, Hard, Very Hard, Insane
     var difficulty = "Easy"
     var numberOfErrorsAllowed = 0
+    
     //getters
     public func getBoard() -> [[Int]] {
         return solvedBoard
@@ -30,6 +31,11 @@ struct Board {
     }
     public func getNumberOfErrorsAllowed() -> Int {
         return numberOfErrorsAllowed
+    }
+    public mutating func getErrorsLeft() -> String {
+        numberOfErrorsAllowed -= 1
+        return "Errors Left: \(numberOfErrorsAllowed)"
+
     }
     
     //setters
@@ -56,6 +62,9 @@ struct Board {
             numberOfErrorsAllowed = 4
         }
     }
+    public mutating func updateGameBoard(updateSpace: (Int, Int), newValue: Int) {
+        gameBoard[updateSpace.0][updateSpace.1] = newValue
+    }
 
     
     public mutating func startSudoku() {
@@ -63,7 +72,7 @@ struct Board {
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
         generateBoard()
-        printBoard()
+
         
     }
     
@@ -147,15 +156,6 @@ struct Board {
         return true
     }//end valid
     
-    public func printBoard() {
-        print(solvedBoard)
-    }
-    
-    public mutating func getErrorsLeft() -> String {
-        
-        return "Errors Left: \(numberOfErrorsAllowed)"
-        numberOfErrorsAllowed -= 1
-    }
     
     private mutating func createGameBoard() {
         var numberspacesRemove = 0
