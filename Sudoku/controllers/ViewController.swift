@@ -13,20 +13,45 @@ class ViewController: UIViewController {
     //@IBOutlet var test: [UILabel]!
     var buttonToSet: UIButton!
     var currentGridLocation: (Int, Int)!
+    var gridButtonIndex: Int = -1
+    var oldGridButtonIndex: Int = -1
     
     @IBOutlet var gridButtons: [UIButton]!
     
     @IBAction func gridButtonPushed(_ sender: UIButton) {
         if sender.tag == 0 {
-            if buttonToSet == nil {
+            //if no previous gridbutton selected
+            if gridButtonIndex == -1 {
+                //buttonToSet = sender
+                gridButtonIndex = gridButtons.firstIndex(of: sender) ?? -1
                 readyButtonToSet(newButton: sender)
+                print(gridButtonIndex)
+                
             }
+            //a gridbutton has been selected, but not changed
             else {
+                
+                oldGridButtonIndex = gridButtonIndex
+                gridButtonIndex = gridButtons.firstIndex(of: sender) ?? -1
+                //clear old gridbutton selected
                 clearButtonToSet()
-                readyButtonToSet(newButton: sender)      }
+                readyButtonToSet(newButton: sender)
+                print(gridButtonIndex)
             }
+        }
     }
     
+    @IBAction func numberButtonPushed(_ sender: UIButton) {
+        if gridButtonIndex != -1 {
+            //buttonToSet.setTitle(sender.currentTitle, for: .normal)
+            //buttonToSet.tag = 1
+            gridButtons[gridButtonIndex].setTitle(sender.currentTitle, for: .normal)
+            gridButtons[gridButtonIndex].setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+            gridButtons[gridButtonIndex].tag = 1
+            gridButtonIndex = -1
+            
+        }
+    }
     
     
     var boardManager = Board()
@@ -34,16 +59,24 @@ class ViewController: UIViewController {
     
     
     private func readyButtonToSet(newButton: UIButton) {
-        buttonToSet = newButton
-        buttonToSet.setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
-        buttonToSet.setTitle("?", for: .normal)
+        //buttonToSet = newButton
+        //buttonToSet.setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
+        //buttonToSet.setTitle("?", for: .normal)
+        
+        gridButtons[gridButtonIndex].setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
+        gridButtons[gridButtonIndex].setTitle("?", for: .normal)
         
     }
     
     private func clearButtonToSet() {
-        buttonToSet.setTitle("", for: .normal)
-        buttonToSet.setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
-        buttonToSet.tag = 0
+        //buttonToSet.setTitle("", for: .normal)
+        //buttonToSet.setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
+        //buttonToSet.tag = 0
+        gridButtons[oldGridButtonIndex].setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        gridButtons[oldGridButtonIndex].setTitle("", for: .normal)
+        oldGridButtonIndex = -1
+        
+        
         
     }
     override func viewDidLoad() {

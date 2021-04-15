@@ -1061,6 +1061,9 @@
                                 <state key="normal" title="1">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="numberButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmB-04-N9t"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3e-IR-QSH">
                                 <rect key="frame" x="172" y="536" width="42" height="42"/>
