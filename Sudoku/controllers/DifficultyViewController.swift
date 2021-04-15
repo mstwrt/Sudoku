@@ -24,7 +24,8 @@ class DifficultyViewController: UIViewController, UIPickerViewDelegate, UIPicker
         //add additional setup code after load
         difficultyPicker.delegate = self
         difficultyPicker.dataSource = self
-        print(difficultyPicker.frame)
+        //print(difficultyPicker.frame)
+        difficultyPicker.setValue(UIColor.black, forKey: "textColor")
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,7 +49,6 @@ class DifficultyViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         difficulty = listOfDifficulties[row]
-        //character.setName(NewName: newName)
     }
     
 }//end class

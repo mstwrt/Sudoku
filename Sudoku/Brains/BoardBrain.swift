@@ -76,6 +76,36 @@ struct Board {
         
     }
     
+    public func checkBoardFinished() -> Bool {
+        if gameBoard == solvedBoard {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    public func checkErrorsLeft() -> Bool {
+        if numberOfErrorsAllowed <= 0 {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    public func checkEndGame() -> Bool {
+        if gameBoard == solvedBoard {
+            return true
+        }
+        else if numberOfErrorsAllowed <= 0 {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     private func findEmptySpace() -> (Int, Int){
         for i in 0 ... solvedBoard.count-1 {
             for j in 0...8 {
