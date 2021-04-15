@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     //@IBOutlet var displayRows: [UILabel]!
     //@IBOutlet var test: [UILabel]!
-    var buttonToSet: UIButton!
+    //var buttonToSet: UIButton!
     var currentGridLocation: (Int, Int)!
     var gridButtonIndex: Int = -1
     var oldGridButtonIndex: Int = -1
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             //gridLabelArray[i+72].text = boardManager.getSpace(space: (8,i))
         }
         for i in 0 ... gridButtons.count-1 {
-            buttonToSet = nil
+            //buttonToSet = nil
             gridButtons[i].tag = 1
             gridButtons[i].setTitleColor(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), for: .normal)
             if gridButtons[i].currentTitle == "0" {
