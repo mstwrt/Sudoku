@@ -19,7 +19,7 @@ struct Board {
                               [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
     //difficulty: practice, Very Easy, Easy, Mdium, Hard, Very Hard, Insane
-    var difficulty = "Easy"
+    var difficulty = "Practice"
     var numberOfErrorsAllowed = 0
     
     //getters
@@ -43,23 +43,23 @@ struct Board {
         difficulty = diff
         switch difficulty {
         case "Practice":
-            numberOfErrorsAllowed = 1
+            numberOfErrorsAllowed = 10
         case "Very Easy":
-            numberOfErrorsAllowed = 3
-        case "Easy":
-            numberOfErrorsAllowed = 4
-        case "Medium":
             numberOfErrorsAllowed = 5
+        case "Easy":
+            numberOfErrorsAllowed = 10
+        case "Medium":
+            numberOfErrorsAllowed = 15
         case "Hard":
-            numberOfErrorsAllowed = 7
+            numberOfErrorsAllowed = 20
         case "Very Hard":
-            numberOfErrorsAllowed = 9
+            numberOfErrorsAllowed = 25
         case "Master":
-            numberOfErrorsAllowed = 11
+            numberOfErrorsAllowed = 30
         case "Insane":
-            numberOfErrorsAllowed = 13
+            numberOfErrorsAllowed = 40
         default:
-            numberOfErrorsAllowed = 4
+            numberOfErrorsAllowed = 10
         }
     }
     public mutating func updateGameBoard(updateSpace: (Int, Int), newValue: Int) {
@@ -213,8 +213,8 @@ struct Board {
         
         
         while numberspacesRemove > 0 {
-            var row = Int.random(max: 8)
-            var col = Int.random(max: 8)
+            let row = Int.random(max: 8)
+            let col = Int.random(max: 8)
             
             if gameBoard[row][col] != 0 {
                 gameBoard[row][col] = 0

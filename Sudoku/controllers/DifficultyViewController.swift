@@ -10,7 +10,7 @@ import UIKit
 
 class DifficultyViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var difficulty: String = "Easy"
+    var difficulty: String = "Practice"
     let listOfDifficulties = ["Practice", "Very Easy", "Easy", "Medium", "Hard", "Very Hard", "Master", "Insane"]
     
     @IBOutlet weak var difficultyPicker: UIPickerView!

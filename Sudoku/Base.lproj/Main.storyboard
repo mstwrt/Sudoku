@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="ccf-7N-Lw0" customClass="DifficultyViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxI-MQ-cUN">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FO-bL-Sca">
@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-Jz-JwX">
-                                <rect key="frame" x="107" y="282" width="177" height="32"/>
+                                <rect key="frame" x="21" y="282" width="353" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" red="0.1797730854" green="0.20102785819999999" blue="0.40121351519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,6 +62,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2C-LQ-aE0">
+                                <rect key="frame" x="16" y="661" width="84" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_re-start"/>
+                                <connections>
+                                    <action selector="startButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BK8-bm-Pv2"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simple Sudoko" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBs-no-Ox9">
                                 <rect key="frame" x="8" y="44" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1144,19 +1152,19 @@
                                     <action selector="numberButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TLl-RN-4fL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Errors Left: 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvx-5P-frv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tries  Left: 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvx-5P-frv">
                                 <rect key="frame" x="29" y="520" width="345" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2C-LQ-aE0">
-                                <rect key="frame" x="29" y="664" width="64" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63J-Sd-MOV">
+                                <rect key="frame" x="281" y="661" width="93" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="button_start"/>
+                                <state key="normal" image="button_difficulty"/>
                                 <connections>
-                                    <action selector="startButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BK8-bm-Pv2"/>
+                                    <action selector="diffButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cPh-RP-5XH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1246,6 +1254,7 @@
                         <outletCollection property="gridButtons" destination="c6G-b4-gkd" collectionClass="NSMutableArray" id="6h5-uv-o7P"/>
                         <outletCollection property="gridButtons" destination="mmn-gc-iKb" collectionClass="NSMutableArray" id="uOa-rM-dSf"/>
                         <outletCollection property="gridButtons" destination="6tU-qu-lxY" collectionClass="NSMutableArray" id="ZfQ-jC-fvB"/>
+                        <segue destination="ccf-7N-Lw0" kind="presentation" identifier="mainToDiff" id="qp7-4K-NCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1254,6 +1263,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button_difficulty" width="206" height="66"/>
+        <image name="button_re-start" width="195" height="66"/>
         <image name="button_start" width="153" height="66"/>
         <image name="grid" width="680" height="680"/>
     </resources>

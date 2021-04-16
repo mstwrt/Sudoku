@@ -9,15 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var currentGridLocation: (Int, Int)!
-    var gridButtonIndex: Int = -1
-    var oldGridButtonIndex: Int = -1
-    var boardManager = Board()
-    var difficulty: String = ""
+    private var currentGridLocation: (Int, Int)!
+    private var gridButtonIndex: Int = -1
+    private var oldGridButtonIndex: Int = -1
+    private var boardManager = Board()
+    public var difficulty: String = ""
+    
     
     @IBOutlet weak var errorsLeftLabel: UILabel!
     @IBOutlet var gridButtons: [UIButton]!
     
+    
+    @IBAction func diffButtonPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "mainToDiff", sender: self)
+    }
     @IBAction func gridButtonPushed(_ sender: UIButton) {
         //check end game
         if !boardManager.checkEndGame() {
@@ -73,6 +78,16 @@ class ViewController: UIViewController {
         }//end check gridbutton index
     }//end number buttonpushed func
     
+    @IBAction func startButtonPushed(_ sender: UIButton) {
+        boardManager.setDifficulty(diff: difficulty)
+        boardManager.startSudoku()
+        fillGrid()
+        errorsLeftLabel.text = "Tries Left \(String(boardManager.getNumberOfErrorsAllowed()))"
+        gridButtonIndex = -1
+        
+        
+    }
+    
     private func readyButtonToSet(newButton: UIButton) {
         gridButtons[gridButtonIndex].setTitleColor(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), for: .normal)
         gridButtons[gridButtonIndex].setTitle("?", for: .normal)
@@ -114,18 +129,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        print(difficulty)
         boardManager.setDifficulty(diff: difficulty)
         boardManager.startSudoku()
         fillGrid()
-        errorsLeftLabel.text = "Errors Left \(String(boardManager.getNumberOfErrorsAllowed()))"
+        errorsLeftLabel.text = "Tries Left \(String(boardManager.getNumberOfErrorsAllowed()))"
     }
-    
-    @IBAction func startButtonPushed(_ sender: UIButton) {
-        boardManager.startSudoku()
-        fillGrid()
-    }
-    
-    
 }//end claa
 
