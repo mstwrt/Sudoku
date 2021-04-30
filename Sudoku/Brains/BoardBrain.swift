@@ -68,9 +68,13 @@ struct Board {
 
     
     public mutating func startSudoku() {
+        //set solved board to zero
         solvedBoard = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
                  [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+        //make first random row on solved board
+        makeFirstRow()
+        
         generateBoard()
 
         
@@ -120,8 +124,19 @@ struct Board {
         return (-1,-1)
     }//end findempty
     
+    //enerate a random first row
+    private mutating func makeFirstRow() {
+        let randomStartRow = Int.random(max: 8)
+        
+        let startNumbers = [1,2,3,4,5,6,7,8,9].shuffled()
+        for col in 0...8 {
+            solvedBoard[randomStartRow][col] = startNumbers[col]
+        }
+    
+    }
     private mutating func generateBoard() -> Bool {
         var emptySpace: (Int,Int)
+        
         //find empty space
         emptySpace = findEmptySpace()
         //non empty space
@@ -132,6 +147,8 @@ struct Board {
         }
         else {
             //check possible numbers
+            
+            
             for i in [1,2,3,4,5,6,7,8,9].shuffled() {
                 if validateSpace(space: emptySpace, number: i) {
                     solvedBoard[emptySpace.0][emptySpace.1] = i
