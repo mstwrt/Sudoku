@@ -43,7 +43,7 @@
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ffy-s9-8ar"/>
-                        <color key="backgroundColor" red="0.95737239910000005" green="1" blue="0.78526590789999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="difficultyPicker" destination="aVI-1d-NQ8" id="nLe-KM-oVU"/>
@@ -1169,7 +1169,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.95737239908456007" green="1" blue="0.78526590788597861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="errorsLeftLabel" destination="Qvx-5P-frv" id="ocx-VW-aUt"/>
